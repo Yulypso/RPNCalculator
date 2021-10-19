@@ -12,8 +12,24 @@ public class Richalculator {
         Pattern modRegex = Pattern.compile("^([%])");
 
         Pattern numberRegex = Pattern.compile("^(([-+])?[0-9])*([.]([0-9]+))?$");
+        Pattern complexRegex = Pattern.compile("^([^ij])*([ij]){1}(([^ij])*)$");
         Pattern vectorRegex = Pattern.compile("^(([\\[])(([-+])?[0-9])*([.]([0-9]+))?)((,)(([-+])?[0-9])*([.]([0-9]+))*)*([]])$");
 
+        /*
+            2+3i
+            2.0+3.0i
+            2-3i
+            2.0-3.0i
+            i
+            3i
+            +3i
+            -3i
+            +3.0i
+            -3.0i
+            3i+2
+            3.0i-2.0
+            -3.0i-1.0
+         */
         System.out.println(token);
 
         if (token.equals("clear") || token.equals("c")) {
@@ -48,6 +64,38 @@ public class Richalculator {
         else if (vectorRegex.matcher(token).matches()) {
             return "VECTOR";
         }
+        else if (complexRegex.matcher(token).matches()) {
+            String[] strings = token.split("[ij]");
+            System.out.println("array: "+ Arrays.toString(strings) + " length: " + strings.length);
+            switch (strings.length) {
+                case 0 -> {
+                    return "COMPLEX"; // i
+                }
+                case 1 -> { // i at the start or end
+                        String[] tmp = strings[0].split("[+-]");
+                        System.out.println("array: "+ Arrays.toString(tmp) + " length: " + tmp.length);
+
+                        int cpt = 0;
+                        for (int i = 0; i < tmp.length; i++) {
+                            if (numberRegex.matcher(tmp[i]).matches()) {
+                                ++cpt;
+                            }
+                        }
+                        if (cpt == tmp.length)
+                            return "COMPLEX";
+                }
+                case 2 -> {
+                    int cpt = 0;
+                    for (int i = 0; i < strings.length; i++) {
+                        if (numberRegex.matcher(strings[i]).matches()) {
+                            ++cpt;
+                        }
+                    }
+                    if (cpt == strings.length)
+                        return "COMPLEX";
+                }
+            }
+        }
         else if (numberRegex.matcher(token).matches()) {
             return "NUMBER";
         }
@@ -63,7 +111,7 @@ public class Richalculator {
         String token;
 
         loop: while (true) {
-            token = scanner.nextLine().trim();
+            token = scanner.nextLine().replaceAll(" ", "").trim();
             System.out.println("token: " + token);
 
             try {
@@ -74,7 +122,7 @@ public class Richalculator {
                     case "CLEAR" -> pile.clear();
                     case "NUMBER" -> pile.stack(new Nombre(Double.parseDouble(token)));
                     case "COMPLEX" -> {
-
+                        System.out.println("Complex token: " + token);
                     }
                     case "VECTOR" -> {
                         System.out.println("PASS");
