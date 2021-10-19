@@ -43,8 +43,10 @@ public class Nombre implements ObjEmp {
     public ObjEmp div(ObjEmp oe) {
         try {
             if (oe instanceof Nombre) {
-                this.value /= ((Nombre) oe).value;
-                return this;
+                if (((Nombre) oe).value != 0) {
+                    this.value /= ((Nombre) oe).value;
+                    return this;
+                }
             }
             throw new Exception();
         } catch (Exception e) {return null;}
@@ -54,8 +56,10 @@ public class Nombre implements ObjEmp {
     public ObjEmp mod(ObjEmp oe) {
         try {
             if (oe instanceof Nombre) {
-                this.value %= ((Nombre) oe).value;
-                return this;
+                if (((Nombre) oe).value != 0) {
+                    this.value %= ((Nombre) oe).value;
+                    return this;
+                }
             }
             throw new Exception();
         } catch (Exception e) {return null;}

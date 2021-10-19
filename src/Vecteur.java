@@ -42,8 +42,8 @@ public class Vecteur implements ObjEmp {
                     this.values[i] *= ((Vecteur) oe).values[i];
                 }
                 Nombre nombre = new Nombre(0.0);
-                for (int i = 0; i < this.values.length; i++) {
-                    nombre.value += this.values[i];
+                for (Double value : this.values) {
+                    nombre.value += value;
                 }
                 return nombre;
             }
@@ -51,14 +51,40 @@ public class Vecteur implements ObjEmp {
         } catch (Exception e) {return null;}
     }
 
+
     @Override
     public ObjEmp div(ObjEmp oe) {
-        return null;
+        try {
+            if (oe instanceof Vecteur) {
+                for (int i = 0; i < this.values.length; i++) {
+                    if (((Vecteur) oe).values[i] == 0)
+                        throw new Exception();
+                }
+                for (int i = 0; i < this.values.length; i++) {
+                    this.values[i] /= ((Vecteur) oe).values[i];
+                }
+                return this;
+            }
+            throw new Exception();
+        } catch (Exception e) {return null;}
     }
 
     @Override
     public ObjEmp mod(ObjEmp oe) {
-        return null;
+        try {
+            if (oe instanceof Vecteur) {
+                for (int i = 0; i < this.values.length; i++) {
+                    if (((Vecteur) oe).values[i] == 0)
+                        throw new Exception();
+                }
+
+                for (int i = 0; i < this.values.length; i++) {
+                    this.values[i] %= ((Vecteur) oe).values[i];
+                }
+                return this;
+            }
+            throw new Exception();
+        } catch (Exception e) {return null;}
     }
 
     @Override
