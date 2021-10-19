@@ -10,7 +10,7 @@ public class Richalculator {
         System.out.println(pile);
         pile.stack(oe2);
         System.out.println(pile);
-        pile.add();
+        pile.mul();
         System.out.println(pile);
     }
 }

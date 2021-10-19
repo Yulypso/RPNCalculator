@@ -2,18 +2,18 @@ import java.util.Arrays;
 
 public class Vecteur implements ObjEmp {
 
-    public Double[] numbers;
+    public Double[] values;
 
     public Vecteur (Double[] numbers) {
-        this.numbers = numbers;
+        this.values = numbers;
     }
 
     @Override
     public ObjEmp add(ObjEmp oe) {
         try {
             if (oe instanceof Vecteur) {
-                for (int i = 0; i < this.numbers.length; i++) {
-                    this.numbers[i] += ((Vecteur) oe).numbers[i];
+                for (int i = 0; i < this.values.length; i++) {
+                    this.values[i] += ((Vecteur) oe).values[i];
                 }
                 return this;
             }
@@ -23,12 +23,32 @@ public class Vecteur implements ObjEmp {
 
     @Override
     public ObjEmp sub(ObjEmp oe) {
-        return null;
+        try {
+            if (oe instanceof Vecteur) {
+                for (int i = 0; i < this.values.length; i++) {
+                    this.values[i] -= ((Vecteur) oe).values[i];
+                }
+                return this;
+            }
+            throw new Exception();
+        } catch (Exception e) {return null;}
     }
 
     @Override
-    public ObjEmp mul(ObjEmp oe) {
-        return null;
+    public ObjEmp mul(ObjEmp oe) { // produit scalaire
+        try {
+            if (oe instanceof Vecteur) {
+                for (int i = 0; i < this.values.length; i++) {
+                    this.values[i] *= ((Vecteur) oe).values[i];
+                }
+                Nombre nombre = new Nombre(0.0);
+                for (int i = 0; i < this.values.length; i++) {
+                    nombre.value += this.values[i];
+                }
+                return nombre;
+            }
+            throw new Exception();
+        } catch (Exception e) {return null;}
     }
 
     @Override
@@ -43,6 +63,6 @@ public class Vecteur implements ObjEmp {
 
     @Override
     public String toString() {
-        return Arrays.toString(numbers);
+        return Arrays.toString(values);
     }
 }
