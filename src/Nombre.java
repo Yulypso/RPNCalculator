@@ -6,6 +6,7 @@ public class Nombre implements ObjEmp {
         this.value = value;
     }
 
+    @Override
     public ObjEmp add(ObjEmp oe) {
         try {
             if (oe instanceof Nombre) {
@@ -16,6 +17,7 @@ public class Nombre implements ObjEmp {
         } catch (Exception e) {return null;}
     }
 
+    @Override
     public ObjEmp sub(ObjEmp oe) {
         try {
             if (oe instanceof Nombre) {
@@ -26,6 +28,7 @@ public class Nombre implements ObjEmp {
         } catch (Exception e) {return null;}
     }
 
+    @Override
     public ObjEmp mul(ObjEmp oe) {
         try {
             if (oe instanceof Nombre) {
@@ -36,6 +39,7 @@ public class Nombre implements ObjEmp {
         } catch (Exception e) {return null;}
     }
 
+    @Override
     public ObjEmp div(ObjEmp oe) {
         try {
             if (oe instanceof Nombre) {
@@ -46,6 +50,7 @@ public class Nombre implements ObjEmp {
         } catch (Exception e) {return null;}
     }
 
+    @Override
     public ObjEmp mod(ObjEmp oe) {
         try {
             if (oe instanceof Nombre) {
