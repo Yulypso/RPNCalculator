@@ -81,8 +81,12 @@ public class Complexe implements ObjEmp{
                     return this;
                 }
                 case "Nombre" -> {
-                    this.real *= ((Nombre) oe).value;
-                    return this;
+                    if (((Nombre) oe).value != 0) {
+                        this.real /= ((Nombre) oe).value;
+                        this.imag /= ((Nombre) oe).value;
+                        return this;
+                    }
+                    throw new Exception();
                 }
                 default -> throw new Exception();
             }

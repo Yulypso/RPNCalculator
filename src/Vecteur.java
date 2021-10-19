@@ -4,87 +4,86 @@ public class Vecteur implements ObjEmp {
 
     public Double[] values;
 
-    public Vecteur (Double[] numbers) {
-        this.values = numbers;
+    public Vecteur (Double[] values) {
+        this.values = values;
     }
 
     @Override
     public ObjEmp add(ObjEmp oe) {
         try {
-            if (oe instanceof Vecteur) {
-                for (int i = 0; i < this.values.length; i++) {
-                    this.values[i] += ((Vecteur) oe).values[i];
+            switch (oe.getClass().getName()) {
+                case "Vecteur" -> {
+                    for (int i = 0; i < this.values.length; i++) {
+                        this.values[i] += ((Vecteur) oe).values[i];
+                    }
+                    return this;
                 }
-                return this;
+                case "Nombre" -> {
+                    for (int i = 0; i < this.values.length; i++) {
+                        this.values[i] += ((Nombre) oe).value;
+                    }
+                    return this;
+                }
+                default -> throw new Exception();
             }
-            throw new Exception();
         } catch (Exception e) {return null;}
     }
 
     @Override
     public ObjEmp sub(ObjEmp oe) {
         try {
-            if (oe instanceof Vecteur) {
-                for (int i = 0; i < this.values.length; i++) {
-                    this.values[i] -= ((Vecteur) oe).values[i];
+            switch (oe.getClass().getName()) {
+                case "Vecteur" -> {
+                    for (int i = 0; i < this.values.length; i++) {
+                        this.values[i] -= ((Vecteur) oe).values[i];
+                    }
+                    return this;
                 }
-                return this;
+                case "Nombre" -> {
+                    for (int i = 0; i < this.values.length; i++) {
+                        this.values[i] -= ((Nombre) oe).value;
+                    }
+                    return this;
+                }
+                default -> throw new Exception();
             }
-            throw new Exception();
         } catch (Exception e) {return null;}
     }
 
     @Override
     public ObjEmp mul(ObjEmp oe) { // produit scalaire
         try {
-            if (oe instanceof Vecteur) {
-                for (int i = 0; i < this.values.length; i++) {
-                    this.values[i] *= ((Vecteur) oe).values[i];
+            switch (oe.getClass().getName()) {
+                case "Vecteur" -> {
+                    for (int i = 0; i < this.values.length; i++) {
+                        this.values[i] *= ((Vecteur) oe).values[i];
+                    }
+                    Nombre nombre = new Nombre(0.0);
+                    for (Double value : this.values) {
+                        nombre.value += value;
+                    }
+                    return nombre;
                 }
-                Nombre nombre = new Nombre(0.0);
-                for (Double value : this.values) {
-                    nombre.value += value;
+                case "Nombre" -> {
+                    for (int i = 0; i < this.values.length; i++) {
+                        this.values[i] *= ((Nombre) oe).value;
+                    }
+                    return this;
                 }
-                return nombre;
+                default -> throw new Exception();
             }
-            throw new Exception();
         } catch (Exception e) {return null;}
     }
 
 
     @Override
     public ObjEmp div(ObjEmp oe) {
-        try {
-            if (oe instanceof Vecteur) {
-                for (int i = 0; i < this.values.length; i++) {
-                    if (((Vecteur) oe).values[i] == 0)
-                        throw new Exception();
-                }
-                for (int i = 0; i < this.values.length; i++) {
-                    this.values[i] /= ((Vecteur) oe).values[i];
-                }
-                return this;
-            }
-            throw new Exception();
-        } catch (Exception e) {return null;}
+        return null;
     }
 
     @Override
     public ObjEmp mod(ObjEmp oe) {
-        try {
-            if (oe instanceof Vecteur) {
-                for (int i = 0; i < this.values.length; i++) {
-                    if (((Vecteur) oe).values[i] == 0)
-                        throw new Exception();
-                }
-
-                for (int i = 0; i < this.values.length; i++) {
-                    this.values[i] %= ((Vecteur) oe).values[i];
-                }
-                return this;
-            }
-            throw new Exception();
-        } catch (Exception e) {return null;}
+        return null;
     }
 
     @Override
