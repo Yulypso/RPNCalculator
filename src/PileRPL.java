@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -16,15 +17,35 @@ public class PileRPL {
     public void add() {
         ObjEmp oeA = this.pile.remove(this.pile.size()-1);
         ObjEmp oeB = this.pile.remove(this.pile.size()-1);
-        this.pile.add(oeA.add(oeB));
+        this.pile.add(oeB.add(oeA));
+    }
+
+    public void sub() {
+        ObjEmp oeA = this.pile.remove(this.pile.size()-1);
+        ObjEmp oeB = this.pile.remove(this.pile.size()-1);
+        this.pile.add(oeB.sub(oeA));
+    }
+
+    public void mul() {
+        ObjEmp oeA = this.pile.remove(this.pile.size()-1);
+        ObjEmp oeB = this.pile.remove(this.pile.size()-1);
+        this.pile.add(oeB.mul(oeA));
+    }
+
+    public void div() {
+        ObjEmp oeA = this.pile.remove(this.pile.size()-1);
+        ObjEmp oeB = this.pile.remove(this.pile.size()-1);
+        this.pile.add(oeB.div(oeA));
+    }
+
+    public void mod() {
+        ObjEmp oeA = this.pile.remove(this.pile.size()-1);
+        ObjEmp oeB = this.pile.remove(this.pile.size()-1);
+        this.pile.add(oeB.mod(oeA));
     }
 
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
-        for (ObjEmp oe: this.pile) {
-            sb.append('[').append(oe.val).append(']');
-        }
-        return  "pile: " + sb;
+        return Arrays.toString(pile.toArray());
     }
 }

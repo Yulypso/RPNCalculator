@@ -1,14 +1,7 @@
-public class ObjEmp { // extends Number
-
-    //public Number val;
-    public long val;
-
-    ObjEmp(long val) {
-        this.val = val;
-    }
-
-    public ObjEmp add(ObjEmp oe) {
-        oe.val = this.val + oe.val;
-        return oe;
-    }
+public interface ObjEmp {
+    ObjEmp add(ObjEmp oe);
+    ObjEmp sub(ObjEmp oe);
+    ObjEmp mul(ObjEmp oe);
+    ObjEmp div(ObjEmp oe);
+    ObjEmp mod(ObjEmp oe);
 }
