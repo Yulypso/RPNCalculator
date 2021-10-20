@@ -6,8 +6,8 @@ public class PileRPL {
 
     List<ObjEmp> pile;
 
-    public PileRPL(long size) {
-        this.pile = new LinkedList<ObjEmp>();
+    public PileRPL() {
+        this.pile = new LinkedList<>();
     }
 
     public void stack(ObjEmp oe) {
@@ -42,6 +42,10 @@ public class PileRPL {
         ObjEmp oeA = this.pile.remove(this.pile.size()-1);
         ObjEmp oeB = this.pile.remove(this.pile.size()-1);
         this.pile.add(oeB.mod(oeA));
+    }
+
+    public void clear() {
+        this.pile.clear();
     }
 
     @Override
