@@ -1,3 +1,5 @@
+package Models;
+
 public interface ObjEmp {
     ObjEmp add(ObjEmp oe);
     ObjEmp sub(ObjEmp oe);

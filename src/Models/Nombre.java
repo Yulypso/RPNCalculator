@@ -1,8 +1,10 @@
+package Models;
+
 public class Nombre implements ObjEmp {
 
     public Double value;
 
-    Nombre(Double value) {
+    public Nombre(Double value) {
         this.value = value;
     }
 
@@ -10,17 +12,17 @@ public class Nombre implements ObjEmp {
     public ObjEmp add(ObjEmp oe) {
         try {
             switch (oe.getClass().getName()) {
-                case "Nombre" -> {
+                case "Models.Nombre" -> {
                     this.value += ((Nombre) oe).value;
                     return this;
                 }
-                case "Vecteur" -> {
+                case "Models.Vecteur" -> {
                     for (int i = 0; i < ((Vecteur) oe).values.length; i++) {
                         ((Vecteur) oe).values[i] += this.value;
                     }
                     return oe;
                 }
-                case "Complexe" -> {
+                case "Models.Complexe" -> {
                     ((Complexe) oe).real += this.value;
                     return oe;
                 }
@@ -33,17 +35,17 @@ public class Nombre implements ObjEmp {
     public ObjEmp sub(ObjEmp oe) {
         try {
             switch (oe.getClass().getName()) {
-                case "Nombre" -> {
+                case "Models.Nombre" -> {
                     this.value -= ((Nombre) oe).value;
                     return this;
                 }
-                case "Vecteur" -> {
+                case "Models.Vecteur" -> {
                     for (int i = 0; i < ((Vecteur) oe).values.length; i++) {
                         ((Vecteur) oe).values[i] -= this.value;
                     }
                     return oe;
                 }
-                case "Complexe" -> {
+                case "Models.Complexe" -> {
                     ((Complexe) oe).real -= this.value;
                     return oe;
                 }
@@ -56,17 +58,17 @@ public class Nombre implements ObjEmp {
     public ObjEmp mul(ObjEmp oe) {
         try {
             switch (oe.getClass().getName()) {
-                case "Nombre" -> {
+                case "Models.Nombre" -> {
                     this.value *= ((Nombre) oe).value;
                     return this;
                 }
-                case "Vecteur" -> {
+                case "Models.Vecteur" -> {
                     for (int i = 0; i < ((Vecteur) oe).values.length; i++) {
                         ((Vecteur) oe).values[i] *= this.value;
                     }
                     return oe;
                 }
-                case "Complexe" -> {
+                case "Models.Complexe" -> {
                     ((Complexe) oe).real *= this.value;
                     return oe;
                 }
@@ -79,13 +81,13 @@ public class Nombre implements ObjEmp {
     public ObjEmp div(ObjEmp oe) {
         try {
             switch (oe.getClass().getName()) {
-                case "Nombre" -> {
+                case "Models.Nombre" -> {
                     if (((Nombre) oe).value != 0) {
                         this.value /= ((Nombre) oe).value;
                         return this;
                     }
                 }
-                case "Complexe" -> {
+                case "Models.Complexe" -> {
                     if (!(((Complexe) oe).real == 0 && ((Complexe) oe).imag == 0))
                         return new Complexe(this.value, 0.0).div(oe);
                 }
@@ -98,7 +100,7 @@ public class Nombre implements ObjEmp {
     @Override
     public ObjEmp mod(ObjEmp oe) {
         try {
-            if ("Nombre".equals(oe.getClass().getName())) {
+            if ("Models.Nombre".equals(oe.getClass().getName())) {
                 if (((Nombre) oe).value != 0) {
                     this.value %= ((Nombre) oe).value;
                     return this;

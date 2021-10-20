@@ -1,10 +1,12 @@
+package Models;
+
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
 public class PileRPL {
 
-    List<ObjEmp> pile;
+    public List<ObjEmp> pile;
 
     public PileRPL() {
         this.pile = new LinkedList<>();

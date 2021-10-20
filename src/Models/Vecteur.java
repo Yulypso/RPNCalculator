@@ -1,3 +1,5 @@
+package Models;
+
 import java.util.Arrays;
 
 public class Vecteur implements ObjEmp {
@@ -12,13 +14,13 @@ public class Vecteur implements ObjEmp {
     public ObjEmp add(ObjEmp oe) {
         try {
             switch (oe.getClass().getName()) {
-                case "Vecteur" -> {
+                case "Models.Vecteur" -> {
                     for (int i = 0; i < this.values.length; i++) {
                         this.values[i] += ((Vecteur) oe).values[i];
                     }
                     return this;
                 }
-                case "Nombre" -> {
+                case "Models.Nombre" -> {
                     for (int i = 0; i < this.values.length; i++) {
                         this.values[i] += ((Nombre) oe).value;
                     }
@@ -33,13 +35,13 @@ public class Vecteur implements ObjEmp {
     public ObjEmp sub(ObjEmp oe) {
         try {
             switch (oe.getClass().getName()) {
-                case "Vecteur" -> {
+                case "Models.Vecteur" -> {
                     for (int i = 0; i < this.values.length; i++) {
                         this.values[i] -= ((Vecteur) oe).values[i];
                     }
                     return this;
                 }
-                case "Nombre" -> {
+                case "Models.Nombre" -> {
                     for (int i = 0; i < this.values.length; i++) {
                         this.values[i] -= ((Nombre) oe).value;
                     }
@@ -54,7 +56,7 @@ public class Vecteur implements ObjEmp {
     public ObjEmp mul(ObjEmp oe) { // produit scalaire
         try {
             switch (oe.getClass().getName()) {
-                case "Vecteur" -> {
+                case "Models.Vecteur" -> {
                     for (int i = 0; i < this.values.length; i++) {
                         this.values[i] *= ((Vecteur) oe).values[i];
                     }
@@ -64,7 +66,7 @@ public class Vecteur implements ObjEmp {
                     }
                     return nombre;
                 }
-                case "Nombre" -> {
+                case "Models.Nombre" -> {
                     for (int i = 0; i < this.values.length; i++) {
                         this.values[i] *= ((Nombre) oe).value;
                     }

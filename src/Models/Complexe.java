@@ -1,4 +1,6 @@
-public class Complexe implements ObjEmp{
+package Models;
+
+public class Complexe implements ObjEmp {
 
     public Double real;
     public Double imag;
@@ -17,12 +19,12 @@ public class Complexe implements ObjEmp{
     public ObjEmp add(ObjEmp oe) {
         try {
             switch (oe.getClass().getName()) {
-                case "Complexe" -> {
+                case "Models.Complexe" -> {
                     this.real += ((Complexe) oe).real;
                     this.imag += ((Complexe) oe).imag;
                     return this;
                 }
-                case "Nombre" -> {
+                case "Models.Nombre" -> {
                     this.real += ((Nombre) oe).value;
                     return this;
                 }
@@ -35,12 +37,12 @@ public class Complexe implements ObjEmp{
     public ObjEmp sub(ObjEmp oe) {
         try {
             switch (oe.getClass().getName()) {
-                case "Complexe" -> {
+                case "Models.Complexe" -> {
                     this.real -= ((Complexe) oe).real;
                     this.imag -= ((Complexe) oe).imag;
                     return this;
                 }
-                case "Nombre" -> {
+                case "Models.Nombre" -> {
                     this.real -= ((Nombre) oe).value;
                     return this;
                 }
@@ -53,14 +55,14 @@ public class Complexe implements ObjEmp{
     public ObjEmp mul(ObjEmp oe) {
         try {
             switch (oe.getClass().getName()) {
-                case "Complexe" -> {
+                case "Models.Complexe" -> {
                     double tmpReal = this.real * ((Complexe) oe).real;
                     double tmpImag = this.real * ((Complexe) oe).imag;
                     this.real = tmpReal - this.imag * ((Complexe) oe).imag;
                     this.imag = tmpImag + this.imag * ((Complexe) oe).real;
                     return this;
                 }
-                case "Nombre" -> {
+                case "Models.Nombre" -> {
                     this.real *= ((Nombre) oe).value;
                     return this;
                 }
@@ -73,14 +75,14 @@ public class Complexe implements ObjEmp{
     public ObjEmp div(ObjEmp oe) {
         try {
             switch (oe.getClass().getName()) {
-                case "Complexe" -> {
+                case "Models.Complexe" -> {
                     double realTmp = (this.real * ((Complexe) oe).real + this.imag * ((Complexe) oe).imag) / (((Complexe) oe).real * ((Complexe) oe).real + ((Complexe) oe).imag * ((Complexe) oe).imag);
                     double imagTmp = (this.imag * ((Complexe) oe).real - this.real * ((Complexe) oe).imag) / (((Complexe) oe).real * ((Complexe) oe).real + ((Complexe) oe).imag * ((Complexe) oe).imag);
                     this.real = realTmp;
                     this.imag = imagTmp;
                     return this;
                 }
-                case "Nombre" -> {
+                case "Models.Nombre" -> {
                     if (((Nombre) oe).value != 0) {
                         this.real /= ((Nombre) oe).value;
                         this.imag /= ((Nombre) oe).value;
