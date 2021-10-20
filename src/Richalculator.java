@@ -30,7 +30,7 @@ public class Richalculator {
             3.0i-2.0
             -3.0i-1.0
          */
-        System.out.println(token);
+        //System.out.println(token);
 
         if (token.equals("clear") || token.equals("c")) {
             System.out.println("CLEAR");
@@ -40,40 +40,21 @@ public class Richalculator {
             System.out.println("QUIT");
             return "QUIT";
         }
-        else if (addRegex.matcher(token).matches()) {
-            System.out.println("ADD MATCH");
-            return "ADD";
-        }
-        else if (subRegex.matcher(token).matches()) {
-            System.out.println("SUB MATCH");
-            return "SUB";
-        }
-        else if (mulRegex.matcher(token).matches()) {
-            System.out.println("MUL MATCH");
-            return "MUL";
-        }
-        else if (divRegex.matcher(token).matches()) {
-            System.out.println("DIV MATCH");
-            return "DIV";
-        }
-        else if (modRegex.matcher(token).matches()) {
-            System.out.println("MOD MATCH");
-            return "MOD";
-        }
+
 
         else if (vectorRegex.matcher(token).matches()) {
             return "VECTOR";
         }
         else if (complexRegex.matcher(token).matches()) {
             String[] strings = token.split("[ij]");
-            System.out.println("array: "+ Arrays.toString(strings) + " length: " + strings.length);
+            //System.out.println("array: "+ Arrays.toString(strings) + " length: " + strings.length);
             switch (strings.length) {
                 case 0 -> {
                     return "COMPLEX"; // i
                 }
                 case 1 -> { // i at the start or end
                         String[] tmp = strings[0].split("[+-]");
-                        System.out.println("array: "+ Arrays.toString(tmp) + " length: " + tmp.length);
+                        //System.out.println("array: "+ Arrays.toString(tmp) + " length: " + tmp.length);
 
                         int cpt = 0;
                         for (int i = 0; i < tmp.length; i++) {
@@ -96,8 +77,29 @@ public class Richalculator {
                 }
             }
         }
+
         else if (numberRegex.matcher(token).matches()) {
             return "NUMBER";
+        }
+        else if (addRegex.matcher(token).matches()) {
+            System.out.println("ADD MATCH");
+            return "ADD";
+        }
+        else if (subRegex.matcher(token).matches()) {
+            System.out.println("SUB MATCH");
+            return "SUB";
+        }
+        else if (mulRegex.matcher(token).matches()) {
+            System.out.println("MUL MATCH");
+            return "MUL";
+        }
+        else if (divRegex.matcher(token).matches()) {
+            System.out.println("DIV MATCH");
+            return "DIV";
+        }
+        else if (modRegex.matcher(token).matches()) {
+            System.out.println("MOD MATCH");
+            return "MOD";
         }
         return null;
     }
@@ -110,7 +112,7 @@ public class Richalculator {
         String token;
 
         Pattern complexPMRegex = Pattern.compile("[+-]");
-        Pattern complex09Regex = Pattern.compile("[0-9]");
+        Pattern numberRegex = Pattern.compile("^(([-+])?[0-9])*([.]([0-9]+))?$");
 
         richalculator: while (true) {
             token = scanner.nextLine().replaceAll(" ", "").trim();
@@ -126,18 +128,28 @@ public class Richalculator {
                     case "COMPLEX" -> {
                         System.out.println("Complex token: " + token);
                         String[] strings = token.split("[ij]");
+                        System.out.println("strings length (ij): " + strings.length);
 
                         switch (strings.length) {
-                            case 0 -> {
+                            case 0 -> { // i
                                 pile.stack(new Complexe(1.0));
                             }
                             case 1 -> {
-                                String[] tmp = token.split("[+-]");
-                                /*switch (tmp.length) {
-                                    case 0: {
-                                        if ()
+                                String[] tmp = strings[0].split("[+-]");
+                                System.out.println("tmp length (+-): " + tmp.length);
+                                switch (tmp.length) {
+                                    case 0: { // +i -i
+                                        System.out.println("strings 0: " + strings[0]);
+                                        if (strings[0].equals("+"))
+                                            pile.stack(new Complexe(1.0));
+                                        else if(strings[0].equals("-"))
+                                            pile.stack(new Complexe(-1.0));
                                     }
-                                }*/
+                                    case 1: {
+                                        if (numberRegex.matcher(tmp[0]).matches())
+                                            pile.stack(new Complexe(Double.parseDouble(tmp[0])));
+                                    }
+                                }
 
 
 
@@ -174,7 +186,7 @@ public class Richalculator {
                     }
                     case null, default -> System.err.println("[Warning] - Unknown input: " + token);
                 }
-            } catch (Exception e) {System.err.println("[Warning] - " + e.getMessage());}
+            } catch (Exception e) {}
             System.out.println(pile);
         }
         scanner.close();
