@@ -100,6 +100,7 @@ public class Complexe implements ObjEmp{
 
     @Override
     public String toString() {
-        return "(" + real + " + " + imag + "j)";
+
+        return "(" + real + (this.imag >= 0 ? " +" : " ") + imag + "j)";
     }
 }
