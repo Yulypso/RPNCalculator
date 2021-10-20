@@ -99,7 +99,6 @@ public class Richalculator {
         else if (numberRegex.matcher(token).matches()) {
             return "NUMBER";
         }
-
         return null;
     }
 
@@ -110,19 +109,40 @@ public class Richalculator {
         Scanner scanner = new Scanner(System.in);
         String token;
 
-        loop: while (true) {
+        Pattern complexPMRegex = Pattern.compile("[+-]");
+        Pattern complex09Regex = Pattern.compile("[0-9]");
+
+        richalculator: while (true) {
             token = scanner.nextLine().replaceAll(" ", "").trim();
             System.out.println("token: " + token);
 
             try {
                 switch (typeDetector(token)) {
                     case "QUIT" -> {
-                        break loop;
+                        break richalculator;
                     }
                     case "CLEAR" -> pile.clear();
                     case "NUMBER" -> pile.stack(new Nombre(Double.parseDouble(token)));
                     case "COMPLEX" -> {
                         System.out.println("Complex token: " + token);
+                        String[] strings = token.split("[ij]");
+
+                        switch (strings.length) {
+                            case 0 -> {
+                                pile.stack(new Complexe(1.0));
+                            }
+                            case 1 -> {
+                                String[] tmp = token.split("[+-]");
+                                /*switch (tmp.length) {
+                                    case 0: {
+                                        if ()
+                                    }
+                                }*/
+
+
+
+                            }
+                        }
                     }
                     case "VECTOR" -> {
                         System.out.println("PASS");
