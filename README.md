@@ -27,7 +27,7 @@ $ bash Richalculator.sh
 ```
 
 <p align="center" width="100%">
-    <img align="center" width="450" src="https://user-images.githubusercontent.com/59794336/138564411-2692acad-cf81-48a5-ac50-e8c7e25583cb.png"/>
+    <img align="center" width="450" src="https://user-images.githubusercontent.com/59794336/138564958-2ac90a05-1268-4ec6-a6fd-bc439e42b17d.png"/>
 </p>
 
 <br/>
