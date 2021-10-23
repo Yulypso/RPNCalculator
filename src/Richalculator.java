@@ -209,7 +209,7 @@ public class Richalculator {
         Utils.clearConsole();
 
         System.out.println("        ╔═══════════════════════════════════════════════╗");
-        System.out.println("        ║            RiChalculator 🐼🦈🦓🐍🦫           ║");
+        System.out.println("        ║            RiChalculator 🐼🐬🦓🐍🦫           ║");
         System.out.println("        ╠═══════════════════════════════════════════════╣");
         System.out.println("        ║                                               ║");
         System.out.println("        ║                                               ║");
