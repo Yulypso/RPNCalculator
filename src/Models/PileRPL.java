@@ -16,54 +16,54 @@ public class PileRPL {
         this.pile.add(oe);
     }
 
-    public void add() {
+    public void add() throws Exception {
         ObjEmp oeA = this.pile.remove(this.pile.size()-1);
         ObjEmp oeB = this.pile.remove(this.pile.size()-1);
         ObjEmp res = oeB.add(oeA);
         if (res != null)
             this.pile.add(res);
         else
-            System.err.println("[Error]: Forbidden operation");
+            throw new Exception();
     }
 
-    public void sub() {
+    public void sub() throws Exception {
         ObjEmp oeA = this.pile.remove(this.pile.size()-1);
         ObjEmp oeB = this.pile.remove(this.pile.size()-1);
         ObjEmp res = oeB.sub(oeA);
         if (res != null)
             this.pile.add(res);
         else
-            System.err.println("[Error]: Forbidden operation");
+            throw new Exception();
     }
 
-    public void mul() {
+    public void mul() throws Exception {
         ObjEmp oeA = this.pile.remove(this.pile.size()-1);
         ObjEmp oeB = this.pile.remove(this.pile.size()-1);
         ObjEmp res = oeB.mul(oeA);
         if (res != null)
             this.pile.add(res);
         else
-            System.err.println("[Error]: Forbidden operation");
+            throw new Exception();
     }
 
-    public void div() {
+    public void div() throws Exception {
         ObjEmp oeA = this.pile.remove(this.pile.size()-1);
         ObjEmp oeB = this.pile.remove(this.pile.size()-1);
         ObjEmp res = oeB.div(oeA);
         if (res != null)
             this.pile.add(res);
         else
-            System.err.println("[Error]: Forbidden operation");
+            throw new Exception();
     }
 
-    public void mod() {
+    public void mod() throws Exception {
         ObjEmp oeA = this.pile.remove(this.pile.size()-1);
         ObjEmp oeB = this.pile.remove(this.pile.size()-1);
         ObjEmp res = oeB.mod(oeA);
         if (res != null)
             this.pile.add(res);
         else
-            System.err.println("[Error]: Forbidden operation");
+            throw new Exception();
     }
 
     public void clear() {

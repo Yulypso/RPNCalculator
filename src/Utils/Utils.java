@@ -18,7 +18,13 @@ public class Utils {
         if (token.equals("delete") || token.equals("d")) {
             return "DELETE";
         }
-        if (token.equals("clear") || token.equals("c")) {
+        else if (token.equals("help") || token.equals("h")) {
+            return "HELP";
+        }
+        else if (token.equals("hide") || token.equals("hi")) {
+            return "HIDE";
+        }
+        else if (token.equals("clear") || token.equals("c")) {
             return "CLEAR";
         }
         else if (token.equals("quit") || token.equals("q")) {
@@ -75,5 +81,14 @@ public class Utils {
             return "MOD";
         }
         return null;
+    }
+
+    public static void clearConsole() {
+        System.out.print("\033[H\033[2J");
+        System.out.flush();
+    }
+
+    public static void moveCursorXY(int X, int Y) {
+        System.out.printf("%c[%d;%df", 0x1B, X, Y);
     }
 }
