@@ -226,7 +226,7 @@ public class Richalculator {
             Utils.moveCursorXY(4, 11);
             System.out.println("[0]: ");
             Utils.moveCursorXY(4, 20);
-            System.out.println("|__|");
+            System.out.println("__");
         }
         if (command != null) {
             Utils.moveCursorXY(10, 10);
@@ -238,17 +238,17 @@ public class Richalculator {
         for (int i=0; i<pileRPL.pile.size(); ++i) {
             if (i < 5) {
                 Utils.moveCursorXY(4 + i, 11);
-                System.out.println("|" + (pileRPL.pile.size() - i - 1) + "|: ");
+                System.out.println("[" + (pileRPL.pile.size() - i - 1) + "]: ");
                 Utils.moveCursorXY(4 + i, 20);
                 Utils.moveCursorXY(4 + i, 20);
-                System.out.println("|" + pileRPL.pile.get(pileRPL.pile.size() - i - 1) + "|");
+                System.out.println(pileRPL.pile.get(pileRPL.pile.size() - i - 1));
 
 
                 if (operator != null) {
                     Utils.moveCursorXY(10, 10);
                     System.out.println("[Operation]: " );
                     Utils.moveCursorXY(10, 25);
-                    System.out.println(pileRPL.pile.get(pileRPL.pile.size() - i - 1) + " " + operator + " " + pileRPL.pile.get(pileRPL.pile.size() - i - 1));
+                    System.out.println(pileRPL.getOeB() + " " + operator + " " + pileRPL.getOeA());
                 } else if (operand != null) {
                     Utils.moveCursorXY(10, 10);
                     System.out.println("[Operand]: " );

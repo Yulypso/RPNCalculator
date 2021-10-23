@@ -7,6 +7,8 @@ import java.util.List;
 public class PileRPL {
 
     public List<ObjEmp> pile;
+    private String oeA;
+    private String oeB;
 
     public PileRPL() {
         this.pile = new LinkedList<>();
@@ -19,6 +21,8 @@ public class PileRPL {
     public void add() throws Exception {
         ObjEmp oeA = this.pile.remove(this.pile.size()-1);
         ObjEmp oeB = this.pile.remove(this.pile.size()-1);
+        this.oeA = oeA.toString();
+        this.oeB = oeB.toString();
         ObjEmp res = oeB.add(oeA);
         if (res != null)
             this.pile.add(res);
@@ -29,6 +33,8 @@ public class PileRPL {
     public void sub() throws Exception {
         ObjEmp oeA = this.pile.remove(this.pile.size()-1);
         ObjEmp oeB = this.pile.remove(this.pile.size()-1);
+        this.oeA = oeA.toString();
+        this.oeB = oeB.toString();
         ObjEmp res = oeB.sub(oeA);
         if (res != null)
             this.pile.add(res);
@@ -39,6 +45,8 @@ public class PileRPL {
     public void mul() throws Exception {
         ObjEmp oeA = this.pile.remove(this.pile.size()-1);
         ObjEmp oeB = this.pile.remove(this.pile.size()-1);
+        this.oeA = oeA.toString();
+        this.oeB = oeB.toString();
         ObjEmp res = oeB.mul(oeA);
         if (res != null)
             this.pile.add(res);
@@ -49,6 +57,8 @@ public class PileRPL {
     public void div() throws Exception {
         ObjEmp oeA = this.pile.remove(this.pile.size()-1);
         ObjEmp oeB = this.pile.remove(this.pile.size()-1);
+        this.oeA = oeA.toString();
+        this.oeB = oeB.toString();
         ObjEmp res = oeB.div(oeA);
         if (res != null)
             this.pile.add(res);
@@ -59,6 +69,8 @@ public class PileRPL {
     public void mod() throws Exception {
         ObjEmp oeA = this.pile.remove(this.pile.size()-1);
         ObjEmp oeB = this.pile.remove(this.pile.size()-1);
+        this.oeA = oeA.toString();
+        this.oeB = oeB.toString();
         ObjEmp res = oeB.mod(oeA);
         if (res != null)
             this.pile.add(res);
@@ -77,5 +89,13 @@ public class PileRPL {
     @Override
     public String toString() {
         return Arrays.toString(pile.toArray());
+    }
+
+    public String getOeA() {
+        return oeA;
+    }
+
+    public String getOeB() {
+        return oeB;
     }
 }
